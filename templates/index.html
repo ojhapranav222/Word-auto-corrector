@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autocorrect System</title>
+    <link rel="stylesheet" href="../static/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="input-box">
+            <h1>AutoSuggest and Autocorrect System</h1>
+            <form method="POST" action="/suggest">
+                <div class="form-box">
+                    
+                    <input type="text" class="form-control" id="keyword" name="keyword" required>
+                    <label for="keyword">Enter a word:</label>
+                </div>
+                <a href="#">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <button type="submit">Submit</button></a>
+            </form>
+        </div>
+
+        <div id="suggestions" class="table">
+            {% if suggestions %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Suggested Word</th>
+                        <th>Similarity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for suggestion in suggestions %}
+                    <tr>
+                        <td>{{ suggestion['Word'] }}</td>
+                        <td>{{ suggestion['Similarity'] }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+
+
+    </div>
+</body>
+</html>
